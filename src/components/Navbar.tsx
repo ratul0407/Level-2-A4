@@ -4,7 +4,7 @@ export const Navbar = () => {
   return (
     <div className="p-4 lg:py-8 lg:px-12 border-b-2 relative ">
       <div className="flex flex-col items-center gap-6 justify-between">
-        <Link to="/">The Libraray Management</Link>
+        <Link to="/">The Library Management</Link>
         <nav>
           <ul className="flex justify-between items-center gap-4 ">
             <li>

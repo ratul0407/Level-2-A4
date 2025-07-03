@@ -39,7 +39,7 @@ export const AllBooks = () => {
               <TableCell>{book.isbn}</TableCell>
               <TableCell>{book.copies}</TableCell>
               <TableCell>
-                {book.available ? "Available" : "Out of Stock"}
+                {book.available ? "Available" : "Unavailable"}
               </TableCell>
               <TableCell>
                 <EditBookModal small={true} book={book} />
