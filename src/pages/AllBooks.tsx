@@ -1,3 +1,4 @@
+import { DeleteModal } from "@/components/modals/DeleteModal";
 import { EditBookModal } from "@/components/modals/EditBookModal";
 import {
   Table,
@@ -43,6 +44,7 @@ export const AllBooks = () => {
               </TableCell>
               <TableCell>
                 <EditBookModal small={true} book={book} />
+                <DeleteModal id={book._id} />
               </TableCell>
             </TableRow>
           ))}

@@ -5,6 +5,14 @@ export const baseApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api" }),
   tagTypes: ["books"],
   endpoints: (builder) => ({
+    createBook: builder.mutation({
+      query: (bookData) => ({
+        url: "/books",
+        method: "POST",
+        body: bookData,
+      }),
+      invalidatesTags: ["books"],
+    }),
     getBooks: builder.query({
       query: () => "/books",
       providesTags: ["books"],
@@ -17,7 +25,19 @@ export const baseApi = createApi({
       }),
       invalidatesTags: ["books"],
     }),
+    deleteBook: builder.mutation({
+      query: (id) => ({
+        url: `/books/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["books"],
+    }),
   }),
 });
 
-export const { useGetBooksQuery, useUpdateBookMutation } = baseApi;
+export const {
+  useGetBooksQuery,
+  useUpdateBookMutation,
+  useDeleteBookMutation,
+  useCreateBookMutation,
+} = baseApi;
