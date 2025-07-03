@@ -1,22 +1,53 @@
-import { BookCard } from "@/components/BookCard";
-import { Loader } from "@/components/utility/Loader";
+import { EditBookModal } from "@/components/modals/EditBookModal";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { useGetBooksQuery } from "@/redux/api/baseApi";
 import type { IBook } from "@/types/types";
 
 export const AllBooks = () => {
-  const { data, isLoading } = useGetBooksQuery(undefined);
-  console.log(data?.data);
-  if (isLoading)
-    return (
-      <div className="flex min-w-full justify-center items-center min-h-[70vh]">
-        <Loader />;
-      </div>
-    );
+  const { data } = useGetBooksQuery(undefined);
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {data?.data.map((book: IBook) => (
-        <BookCard key={book._id} book={book} />
-      ))}
+    <div>
+      <Table>
+        <TableCaption>
+          A list of all the books available on the store
+        </TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Title</TableHead>
+            <TableHead>Author</TableHead>
+            <TableHead>Genre</TableHead>
+            <TableHead>ISBN</TableHead>
+            <TableHead>Copies</TableHead>
+            <TableHead>Availability</TableHead>
+            <TableHead>Actions</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {data?.data.map((book: IBook) => (
+            <TableRow key={book._id}>
+              <TableCell>{book.title}</TableCell>
+              <TableCell>{book.author}</TableCell>
+              <TableCell>{book.genre}</TableCell>
+              <TableCell>{book.isbn}</TableCell>
+              <TableCell>{book.copies}</TableCell>
+              <TableCell>
+                {book.available ? "Available" : "Out of Stock"}
+              </TableCell>
+              <TableCell>
+                <EditBookModal small={true} book={book} />
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </div>
   );
 };

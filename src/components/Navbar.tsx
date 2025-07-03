@@ -9,7 +9,7 @@ export const Navbar = () => {
           <ul className="flex justify-between items-center gap-4 ">
             <li>
               <NavLink
-                to="/"
+                to="/all-books"
                 className={({ isActive }) =>
                   isActive ? "text-purple-500" : ""
                 }

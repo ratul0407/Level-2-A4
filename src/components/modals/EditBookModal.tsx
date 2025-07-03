@@ -14,13 +14,20 @@ import { Label } from "@/components/ui/label";
 import type { IBook } from "@/types/types";
 import { PenLine } from "lucide-react";
 
-export const EditBookModal = ({ book }: { book: IBook }) => {
+export const EditBookModal = ({
+  book,
+  small,
+}: {
+  book: IBook;
+  small: boolean;
+}) => {
+  console.log(small);
   return (
     <Dialog>
       <form>
         <DialogTrigger asChild>
           <Button>
-            <span>Edit</span>
+            {!small && <span>Edit</span>}
             <PenLine />
           </Button>
         </DialogTrigger>
