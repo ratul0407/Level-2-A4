@@ -1,4 +1,3 @@
-import { BookCard } from "@/components/BookCard";
 import { Loader } from "@/components/utility/Loader";
 import { useGetBorrowSummaryQuery } from "@/redux/api/baseApi";
 
@@ -14,18 +13,26 @@ export const BorrowSummary = () => {
   }
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-      {data?.data.map(({ totalQuantity, book }) => {
-        return (
-          <div className="shadow-sm border border-gray-100 rounded-lg p-4">
-            <p className="text-purple-500 font-bold font-dancing-script">
-              {book.title}
-            </p>
-            <p>By {book.author}</p>
-            <p className="italic">ISBN number: {book.isbn}</p>
-            <p>Copies borrowed: {totalQuantity}</p>
-          </div>
-        );
-      })}
+      {data?.data.map(
+        ({
+          totalQuantity,
+          book,
+        }: {
+          totalQuantity: number;
+          book: { title: string; author: string; isbn: string };
+        }) => {
+          return (
+            <div className="shadow-sm border border-gray-100 rounded-lg p-4">
+              <p className="text-purple-500 font-bold font-dancing-script">
+                {book.title}
+              </p>
+              <p>By {book.author}</p>
+              <p className="italic">ISBN number: {book.isbn}</p>
+              <p>Copies borrowed: {totalQuantity}</p>
+            </div>
+          );
+        }
+      )}
     </div>
   );
 };

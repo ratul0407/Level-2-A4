@@ -38,15 +38,24 @@ export const BorrowModal = ({ book }: { book: IBook }) => {
         duration: 5000,
       });
     } catch (error: unknown) {
-      if (error?.data?.message) {
-        toast.error(error.data.message + " copies", {
-          position: "top-right",
-          duration: 5000,
-          action: {
-            label: "Try again",
-            onClick: () => console.log("Try again"),
-          },
-        });
+      if (typeof error === "object" && error !== null && "data" in error) {
+        const err = error as {
+          data?: {
+            message?: string;
+            success?: boolean;
+            error?: unknown;
+          };
+        };
+        if (err?.data?.message) {
+          toast.error(err.data.message + " copies", {
+            position: "top-right",
+            duration: 5000,
+            action: {
+              label: "Try again",
+              onClick: () => console.log("Try again"),
+            },
+          });
+        }
       }
     }
   };
