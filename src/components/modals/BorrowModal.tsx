@@ -54,7 +54,7 @@ export const BorrowModal = ({ book }: { book: IBook }) => {
     <div>
       <Dialog>
         <DialogTrigger asChild>
-          <Button>
+          <Button disabled={!book.available}>
             <BookText />
           </Button>
         </DialogTrigger>
