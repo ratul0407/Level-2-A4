@@ -39,7 +39,6 @@ export const DeleteModal = ({ id }: { id: string }) => {
       });
     }
   };
-  console.log(id);
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>

@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api" }),
-  tagTypes: ["books"],
+  tagTypes: ["books", "borrow"],
   endpoints: (builder) => ({
     createBook: builder.mutation({
       query: (bookData) => ({
@@ -32,6 +32,15 @@ export const baseApi = createApi({
       }),
       invalidatesTags: ["books"],
     }),
+    borrowBook: builder.mutation({
+      query: (borrowData) => ({
+        url: "/borrow",
+        method: "POST",
+        body: borrowData,
+      }),
+
+      invalidatesTags: ["books", "borrow"],
+    }),
   }),
 });
 
@@ -40,4 +49,5 @@ export const {
   useUpdateBookMutation,
   useDeleteBookMutation,
   useCreateBookMutation,
+  useBorrowBookMutation,
 } = baseApi;

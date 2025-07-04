@@ -1,3 +1,4 @@
+import { BorrowModal } from "@/components/modals/BorrowModal";
 import { DeleteModal } from "@/components/modals/DeleteModal";
 import { EditBookModal } from "@/components/modals/EditBookModal";
 import {
@@ -42,9 +43,10 @@ export const AllBooks = () => {
               <TableCell>
                 {book.available ? "Available" : "Unavailable"}
               </TableCell>
-              <TableCell>
+              <TableCell className="flex gap-2">
                 <EditBookModal small={true} book={book} />
                 <DeleteModal id={book._id} />
+                <BorrowModal book={book} />
               </TableCell>
             </TableRow>
           ))}
