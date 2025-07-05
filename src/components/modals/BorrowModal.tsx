@@ -57,6 +57,7 @@ export const BorrowModal = ({
           };
         };
         if (err?.data?.message) {
+          setOpen(false);
           toast.error(err.data.message + " copies", {
             position: "top-right",
             duration: 5000,
@@ -70,7 +71,6 @@ export const BorrowModal = ({
           });
         }
       }
-      setOpen(false);
       form.reset();
     }
   };
