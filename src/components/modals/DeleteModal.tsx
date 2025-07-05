@@ -13,9 +13,9 @@ import { useDeleteBookMutation } from "@/redux/api/baseApi";
 import { toast } from "sonner";
 import { useState } from "react";
 
-export const DeleteModal = ({ id }: { id: string }) => {
+export const DeleteModal = ({ id, small }: { id: string; small?: boolean }) => {
   const [open, setOpen] = useState(false);
-  const [deleteBook] = useDeleteBookMutation(undefined);
+  const [deleteBook, { isLoading }] = useDeleteBookMutation(undefined);
   const handleDelete = async () => {
     try {
       await deleteBook(id).unwrap();
@@ -43,6 +43,7 @@ export const DeleteModal = ({ id }: { id: string }) => {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button>
+          {!small && <span>Delete</span>}
           <Trash2 />
         </Button>
       </DialogTrigger>
@@ -51,9 +52,14 @@ export const DeleteModal = ({ id }: { id: string }) => {
           <DialogTitle>Do you want to delete this Book?</DialogTitle>
           <DialogFooter>
             <DialogClose asChild>
-              <Button>No</Button>
+              <Button disabled={isLoading}>No</Button>
             </DialogClose>
-            <Button type="submit" variant="outline" onClick={handleDelete}>
+            <Button
+              type="submit"
+              variant="outline"
+              onClick={handleDelete}
+              disabled={isLoading}
+            >
               Yes
             </Button>
           </DialogFooter>

@@ -45,8 +45,8 @@ export const AllBooks = () => {
               </TableCell>
               <TableCell className="flex gap-2">
                 <EditBookModal small={true} book={book} />
-                <DeleteModal id={book._id} />
-                <BorrowModal book={book} />
+                <DeleteModal id={book._id} small={true} />
+                <BorrowModal book={book} small={true} />
               </TableCell>
             </TableRow>
           ))}

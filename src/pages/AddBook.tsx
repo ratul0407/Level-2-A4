@@ -16,6 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import { useCreateBookMutation } from "@/redux/api/baseApi";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router";
@@ -85,10 +86,9 @@ export const AddBook = () => {
               <FormItem>
                 <FormLabel className="font-bold">Description</FormLabel>
                 <FormControl>
-                  <Input
+                  <Textarea
                     {...field}
                     placeholder="add book description"
-                    type="string"
                     required
                   />
                 </FormControl>

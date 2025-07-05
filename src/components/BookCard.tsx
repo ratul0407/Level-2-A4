@@ -1,7 +1,6 @@
 import type { IBook } from "@/types/types";
-import { BookText } from "lucide-react";
-import { Button } from "./ui/button";
 import { EditBookModal } from "./modals/EditBookModal";
+import { BorrowModal } from "./modals/BorrowModal";
 export const BookCard = ({ book }: { book: IBook }) => {
   const { title, author, genre, copies, isbn } = book;
 
@@ -31,10 +30,7 @@ export const BookCard = ({ book }: { book: IBook }) => {
       <div className="flex gap-2 justify-end">
         <EditBookModal book={book} />
 
-        <Button>
-          <span>Borrow</span>
-          <BookText />
-        </Button>
+        <BorrowModal book={book} />
       </div>
     </div>
   );
