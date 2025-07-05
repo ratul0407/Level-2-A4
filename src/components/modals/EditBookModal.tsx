@@ -204,7 +204,9 @@ export const EditBookModal = ({
             />
             <DialogFooter>
               <DialogClose asChild>
-                <Button variant="outline">Cancel</Button>
+                <Button variant="outline" disabled={isLoading}>
+                  Cancel
+                </Button>
               </DialogClose>
               <Button type="submit" disabled={isLoading}>
                 Save changes
