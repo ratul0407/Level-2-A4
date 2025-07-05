@@ -22,7 +22,10 @@ export const BorrowSummary = () => {
           book: { title: string; author: string; isbn: string };
         }) => {
           return (
-            <div className="shadow-sm border border-gray-100 rounded-lg p-4">
+            <div
+              key={book.isbn}
+              className="shadow-sm border border-gray-100 rounded-lg p-4"
+            >
               <p className="text-purple-500 font-bold font-dancing-script">
                 {book.title}
               </p>
