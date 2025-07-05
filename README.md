@@ -2,23 +2,6 @@
 
 A responsive and modern frontend application for a book management system where users can **add**, **delete**, and **borrow books** by interacting with a backend API. This project is built using **React**, **Redux Toolkit**, **RTK Query**, **React Router**, and **TailwindCSS**, featuring smooth UI feedback through **Sonner notifications**.
 
----
-
-## 📑 Table of Contents
-
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Configuration](#configuration)
-- [Screenshots](#screenshots)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [License](#license)
-
----
-
 ## 🚀 Features
 
 - 🔍 View a list of books from the backend
@@ -51,3 +34,14 @@ A responsive and modern frontend application for a book management system where 
    git clone https://github.com/your-username/book-app-frontend.git
    cd book-app-frontend
    ```
+
+2. **Then Type**
+
+   ```
+   npm install
+
+   npm run dev
+
+   ```
+
+   And then you are good to go 👍
