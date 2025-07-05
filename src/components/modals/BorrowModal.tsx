@@ -20,6 +20,7 @@ import { cn } from "@/lib/utils";
 import { Calendar } from "../ui/calendar";
 import { useBorrowBookMutation } from "@/redux/api/baseApi";
 import { toast } from "sonner";
+import { useState } from "react";
 
 export const BorrowModal = ({
   book,
@@ -28,6 +29,7 @@ export const BorrowModal = ({
   book: IBook;
   small?: boolean;
 }) => {
+  const [open, setOpen] = useState(false);
   const [borrowBook, { isLoading }] = useBorrowBookMutation(undefined);
   const form = useForm();
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -43,6 +45,8 @@ export const BorrowModal = ({
         position: "top-right",
         duration: 5000,
       });
+      form.reset();
+      setOpen(false);
     } catch (error: unknown) {
       if (typeof error === "object" && error !== null && "data" in error) {
         const err = error as {
@@ -63,11 +67,13 @@ export const BorrowModal = ({
           });
         }
       }
+      setOpen(false);
+      form.reset();
     }
   };
   return (
     <div>
-      <Dialog>
+      <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <Button disabled={!book.available}>
             {!small && <span>Borrow</span>}

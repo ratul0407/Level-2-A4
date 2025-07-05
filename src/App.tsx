@@ -7,7 +7,7 @@ function App() {
       <header>
         <Navbar />
       </header>
-      <main className="pt-20 px-12">
+      <main className="pt-20 px-12 md:min-h-screen">
         <Outlet />
       </main>
 
