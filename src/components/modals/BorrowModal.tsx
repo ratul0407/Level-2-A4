@@ -62,7 +62,10 @@ export const BorrowModal = ({
             duration: 5000,
             action: {
               label: "Try again",
-              onClick: () => console.log("Try again"),
+              onClick: () => {
+                console.log("Try again");
+                setOpen(true);
+              },
             },
           });
         }
